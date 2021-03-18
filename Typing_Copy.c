@@ -48,7 +48,7 @@ int main(void) {
 
 			case 27: //Esc
 				system("cls");
-				fputs("ÀÔ·Â º¹Á¦ ¿Ï·á, ÀÔ·ÂÀ» µû¶óÇÕ´Ï´Ù.\n", stdout);
+				fputs("ìž…ë ¥ ë³µì œ ì™„ë£Œ, ìž…ë ¥ì„ ë”°ë¼í•©ë‹ˆë‹¤.\n", stdout);
 				showTime(h_text);
 				return 0;
 
@@ -62,7 +62,7 @@ int main(void) {
 		}
 		if (end - start >= TIMER) {
 			system("cls");
-			fputs("ÀÔ·Â º¹Á¦ ¿Ï·á, ÀÔ·ÂÀ» µû¶óÇÕ´Ï´Ù.\n", stdout);
+			fputs("ìž…ë ¥ ë³µì œ ì™„ë£Œ, ìž…ë ¥ì„ ë”°ë¼í•©ë‹ˆë‹¤.\n", stdout);
 			showTime(h_text);
 			return 0;
 		}
@@ -71,7 +71,7 @@ int main(void) {
 
 void showTime(TEXT* h_text) {
 	if (h_text == NULL) {
-		fputs("\n\nÀÔ·ÂÀÌ ³¡³µ½À´Ï´Ù.\n", stdout);
+		fputs("\n\nìž…ë ¥ì´ ëë‚¬ìŠµë‹ˆë‹¤.\n", stdout);
 		return;
 	}
 	Sleep(h_text->second);
@@ -79,16 +79,19 @@ void showTime(TEXT* h_text) {
 		fputs("\b ", stdout);
 		fputc(h_text->info, stdout);
 		showTime(h_text->n_text);
+		free(h_text);
 		return;
 	}
 	if (h_text->isEnter) {
 		fputs("\n", stdout);
 		showTime(h_text->n_text);
+		free(h_text);
 		return;
 	}
-	
+
 	fputc(h_text->info, stdout);
 	showTime(h_text->n_text);
+	free(h_text);
 	return;
 }
 
