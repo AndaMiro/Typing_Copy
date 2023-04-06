@@ -28,6 +28,7 @@ int main(void) {
 	char text;
 	TEXT* h_text = NULL, * t_text = NULL;
 	clock_t start = clock(), end;
+	fputs("텍스트 입력을 시작합니다.\nBackSpace, Space, Enter 도 사용 가능하며, 복제를 시작하기 위해서는 Esc 를 사용해 주세요.\n", stdout);
 	while (1) {
 		end = clock();
 		if (_kbhit()) {
@@ -72,6 +73,7 @@ int main(void) {
 void showTime(TEXT* h_text) {
 	if (h_text == NULL) {
 		fputs("\n\n입력이 끝났습니다.\n", stdout);
+		Sleep(10000);
 		return;
 	}
 	Sleep(h_text->second);
